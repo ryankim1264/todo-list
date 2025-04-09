@@ -1,5 +1,6 @@
 import { tasks } from '../data/tasks';
-import { TbBrandSlack } from 'react-icons/tb';
+import Input from './Input';
+import TaskItem from './TaskItem';
 
 const TasksContainer = () => {
 	return (
@@ -10,19 +11,7 @@ const TasksContainer = () => {
 
 			<div id="tasks-list">
 				{tasks.map((task, index) => (
-					<div className="task" key={index}>
-						<input
-							type="checkbox"
-							className="checkbox"
-							checked={task.completed === true}
-						/>
-
-						<span>{task.title}</span>
-
-						<button className="delete-button">
-							<i className="fa-solid fa-trash"></i>
-						</button>
-					</div>
+					<TaskItem key={index} task={task} />
 				))}
 			</div>
 		</div>
