@@ -8,6 +8,7 @@ const Input = (props) => {
 			required={props.required}
 			checked={props.checked}
 			onChange={props.onChange}
+			value={props.value}
 		/>
 	);
 };

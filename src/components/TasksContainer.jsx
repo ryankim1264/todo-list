@@ -14,7 +14,7 @@ const TasksContainer = () => {
 
 			<div id="tasks-list">
 				{todos.map((task, index) => (
-					<TaskItem key={index} task={task} />
+					<TaskItem key={index} task={task} setTodos={setTodos} todos={todos} />
 				))}
 			</div>
 		</div>

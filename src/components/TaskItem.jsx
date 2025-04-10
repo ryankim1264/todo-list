@@ -1,25 +1,45 @@
+import { useState } from 'react';
 import Button from './Button';
 import Input from './Input';
 
-const TaskItem = ({ task }) => {
-	const { completed, title } = task;
+const TaskItem = ({ task, setTodos, todos }) => {
+	const [todo, setTodo] = useState(task);
 
-	function handleClick(taskName) {
-		alert(`The clicked task is: ${taskName}`);
+	function handleChange() {
+		setTodo({ ...todo, completed: !todo.completed });
+	}
+
+	function handleClick(id) {
+		console.log(id);
+		console.log(todos);
+
+		setTodos(todos.filter((todo) => todo.id !== id));
 	}
 
 	return (
-		<div className="task">
+		<div
+			className="task"
+			style={{
+				opacity: todo.completed ? '0.3' : '1',
+			}}
+		>
 			<Input
 				type="checkbox"
 				className="checkbox"
-				checked={completed === true}
-				onChange={() => console.log('Hi')}
+				checked={todo.completed}
+				onChange={handleChange}
+				value={todo.completed}
 			/>
 
-			<span>{title}</span>
+			<span
+				style={{
+					textDecoration: todo.completed === true ? 'line-through' : '',
+				}}
+			>
+				{todo.title}
+			</span>
 
-			<Button buttonClass="delete-button" onClick={() => handleClick(title)}>
+			<Button buttonClass="delete-button" onClick={() => handleClick(todo.id)}>
 				<i className="fa-solid fa-trash"></i>
 			</Button>
 		</div>
