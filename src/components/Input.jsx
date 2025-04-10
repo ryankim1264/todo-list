@@ -7,6 +7,7 @@ const Input = (props) => {
 			className={props.className}
 			required={props.required}
 			checked={props.checked}
+			onChange={props.onChange}
 		/>
 	);
 };
