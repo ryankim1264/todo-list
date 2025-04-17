@@ -29,6 +29,36 @@ const TaskItem = ({ todo, setTodos, todos }) => {
 		}
 	}
 
+	/*
+	 Fetching without async-await syntax
+
+		function handleChange(id) {
+			// Optimistic UI update
+			setTodos((prevTodos) =>
+				prevTodos.map((todo) =>
+					todo.id === id ? { ...todo, completed: !todo.completed } : todo
+				)
+			);
+
+			fetch(`${API_URL}/${id}`, {
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ completed: !todo.completed }),
+			}).then((response) => {
+				if (!response.ok) {
+					// If the API call fails, revert the state change
+					setTodos((prevTodos) =>
+						prevTodos.map((todo) =>
+							todo.id === id ? { ...todo, completed: !todo.completed } : todo
+						)
+					);
+				}
+			});
+		}
+	*/
+
 	function handleClick(id) {
 		console.log(id);
 		console.log(todos);
@@ -47,6 +77,7 @@ const TaskItem = ({ todo, setTodos, todos }) => {
 				type="checkbox"
 				className="checkbox"
 				checked={todo.completed}
+				onChange={() => handleChange(todo.id)}
 				onChange={() => handleChange(todo.id)}
 				value={todo.completed}
 			/>
