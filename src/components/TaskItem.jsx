@@ -1,12 +1,32 @@
-import { useState } from 'react';
+import { API_URL } from '../App';
 import Button from './Button';
 import Input from './Input';
 
-const TaskItem = ({ task, setTodos, todos }) => {
-	const [todo, setTodo] = useState(task);
+const TaskItem = ({ todo, setTodos, todos }) => {
+	async function handleChange(id) {
+		// Optimistic UI update
+		setTodos((prevTodos) =>
+			prevTodos.map((todo) =>
+				todo.id === id ? { ...todo, completed: !todo.completed } : todo
+			)
+		);
 
-	function handleChange() {
-		setTodo({ ...todo, completed: !todo.completed });
+		const response = await fetch(`${API_URL}/${id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ completed: !todo.completed }),
+		});
+
+		if (!response.ok) {
+			// If the API call fails, revert the state change
+			setTodos((prevTodos) =>
+				prevTodos.map((todo) =>
+					todo.id === id ? { ...todo, completed: !todo.completed } : todo
+				)
+			);
+		}
 	}
 
 	function handleClick(id) {
@@ -27,7 +47,7 @@ const TaskItem = ({ task, setTodos, todos }) => {
 				type="checkbox"
 				className="checkbox"
 				checked={todo.completed}
-				onChange={handleChange}
+				onChange={() => handleChange(todo.id)}
 				value={todo.completed}
 			/>
 

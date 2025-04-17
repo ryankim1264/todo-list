@@ -5,7 +5,7 @@ import Header from './components/Header';
 import TasksContainer from './components/TasksContainer';
 import TasksCount from './components/TasksCount';
 
-const API_URL = 'http://localhost:3000/tasks';
+export const API_URL = 'http://localhost:3000/tasks';
 
 const App = () => {
 	const [todos, setTodos] = useState([]);
