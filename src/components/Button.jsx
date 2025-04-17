@@ -1,6 +1,6 @@
-const Button = ({ id, type, buttonClass, children, onClick ,onBlur}) => {
+const Button = ({ id, type, buttonClass, children, onClick }) => {
 	return (
-		<button id={id} type={type} className={buttonClass} onClick={onClick} onBlur={onBlur}>
+		<button id={id} type={type} className={buttonClass} onClick={onClick} >
 			{children}
 		</button>
 	);
