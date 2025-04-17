@@ -1,11 +1,6 @@
-import { useState } from 'react';
-import { tasks } from '../data/tasks';
-import Input from './Input';
 import TaskItem from './TaskItem';
 
-const TasksContainer = () => {
-	const [todos, setTodos] = useState(tasks);
-
+const TasksContainer = ({ todos, setTodos }) => {
 	return (
 		<div className="tasks-container">
 			<div className="tasks-header">
