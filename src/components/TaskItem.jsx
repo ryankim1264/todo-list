@@ -59,12 +59,39 @@ const TaskItem = ({ todo, setTodos, todos }) => {
 		}
 	*/
 
-	function handleClick(id) {
-		console.log(id);
-		console.log(todos);
+	async function handleClick(id) {
+		// Optimistic UI update
+		setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
 
-		setTodos(todos.filter((todo) => todo.id !== id));
+		const response = await fetch(`${API_URL}/${id}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+
+		if (!response.ok) {
+			setTodos(todos);
+		}
 	}
+
+	/*
+		function handleClick(id) {
+			// Optimistic UI update
+			setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+
+			fetch(`${API_URL}/${id}`, {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}).then((response) => {
+				if (!response.ok) {
+					setTodos(todos);
+				}
+			});
+		}
+		*/
 
 	return (
 		<div
@@ -77,7 +104,6 @@ const TaskItem = ({ todo, setTodos, todos }) => {
 				type="checkbox"
 				className="checkbox"
 				checked={todo.completed}
-				onChange={() => handleChange(todo.id)}
 				onChange={() => handleChange(todo.id)}
 				value={todo.completed}
 			/>
