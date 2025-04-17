@@ -19,7 +19,7 @@ const App = () => {
 	return (
 		<div className="container">
 			<Header />
-			<AddTaskForm />
+			<AddTaskForm todos={todos} setTodos={setTodos} />
 			<TasksContainer todos={todos} setTodos={setTodos} />
 			<TasksCount />
 			{/* <DemonstratingState /> */}

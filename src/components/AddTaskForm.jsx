@@ -1,14 +1,27 @@
+import { useState } from 'react';
 import Button from './Button';
 import Input from './Input';
 
-const AddTaskForm = () => {
+const AddTaskForm = ({ todos, setTodos }) => {
+	const [newTodo, setNewTodo] = useState({
+		title: '',
+		completed: false,
+	});
+
+	async function handleSubmit(e) {
+		e.preventDefault();
+	}
+
 	return (
 		<div className="add-task-container">
-			<form
-				id="add-task-form"
-				onSubmit={() => alert('The form has been submitted')}
-			>
-				<Input id="task-input" placeholder="Add a new task..." required />
+			<form id="add-task-form" onSubmit={handleSubmit}>
+				<Input
+					id="task-input"
+					placeholder="Add a new task..."
+					required
+					value={newTodo.title}
+					onChange={(e) => setNewTodo({ ...newTodo, title: e.target.value })}
+				/>
 
 				<Button id="add-task-btn">
 					<i className="fas fa-plus"></i>
