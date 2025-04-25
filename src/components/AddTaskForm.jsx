@@ -14,14 +14,8 @@ const AddTaskForm = ({ todos, setTodos }) => {
 
 	return (
 		<div className="add-task-container">
-			<form id="add-task-form" onSubmit={handleSubmit}>
-				<Input
-					id="task-input"
-					placeholder="Add a new task..."
-					required
-					value={newTodo.title}
-					onChange={(e) => setNewTodo({ ...newTodo, title: e.target.value })}
-				/>
+			<form id="add-task-form">
+				<Input id="task-input" placeholder="Add a new task..." required />
 
 				<Button id="add-task-btn">
 					<i className="fas fa-plus"></i>
