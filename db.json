@@ -1,9 +1,38 @@
 {
-  "tasks": [
+  "todos": [
     {
-      "id": "1",
-      "title": "Complete Week 1 Code Challenge",
+      "id": "6",
+      "title": "Coock Supper",
       "completed": false
+    },
+    {
+      "id": "8",
+      "title": "Read a Book",
+      "completed": true
+    },
+    {
+      "id": "8dd6",
+      "title": "Watch Inception"
+    },
+    {
+      "id": "b75c",
+      "title": "Write a Journal"
+    },
+    {
+      "id": "c71e",
+      "title": "Walk a Dog"
+    },
+    {
+      "id": "8e01",
+      "title": "Buy Grocerries"
+    },
+    {
+      "id": "8a64",
+      "title": "create a game"
+    },
+    {
+      "id": "51c3",
+      "title": "Wash the car"
     }
   ]
 }

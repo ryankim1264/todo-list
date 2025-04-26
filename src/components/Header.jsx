@@ -1,12 +1,11 @@
-const Header = () => {
-	return (
-		<header>
-			<h1>
-				Todo List with Fetch API
-			</h1>
-			<p className="subtitle">Learn how to use the Fetch API</p>
-		</header>
-	);
-};
+import React from 'react'
 
-export default Header;
+function Header() {
+  return (
+    <div className='header'>
+        <p> todo list</p>
+    </div>
+  )
+}
+
+export default Header

@@ -1,32 +1,21 @@
-import { useState } from 'react';
-import AddTaskForm from './components/AddTaskForm';
-// import DemonstratingState from './components/DemonstratingState';
+import './App.css';
+import DisplayList from './components/DisplayList';
+import DispalyList from './components/DisplayList';
 import Header from './components/Header';
-import TasksContainer from './components/TasksContainer';
-import TasksCount from './components/TasksCount';
+import SearchBar from './components/SearchBar';
+import React,{ useState } from 'react';
 
+function App() {
 
-const App = () => {
-	const [todos, setTodos] = useState([]);
+const [todos,setTodo]=useState([]);
 
-	useEffect(() => {
-		fetch(API_URL)
-			.then((res) => res.json())
-			.then((data) => setTodos(data));
-	}, []);
+  return (
+    <div className="App">
+      <Header />
+      <SearchBar setTodo={setTodo}/>
+      <DisplayList todos={todos} setTodo={setTodo} />
+    </div>
+  );
+}
 
-
-	return (
-
-		<div className="container">
-           
-			
-			<Header />
-			<AddTaskForm todos={todos} setTodos={setTodos} />
-			<TasksContainer todos={todos} setTodos={setTodos} />
-			<TasksCount />
-			{/* <DemonstratingState /> */}
-		</div>
-	);
-};
 export default App;
