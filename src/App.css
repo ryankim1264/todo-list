@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
   font-family: 'Poppins', sans-serif;
@@ -7,40 +7,44 @@
 
 body {
   margin: 0;
-  padding: 20px;
-  background-color:grey;
-
+  padding: 40px;
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
   border-radius: 25px;
-  border: 2px solid black;
-  margin: 10px 5px;
-  padding: 15px;
+  border: 2px solid #8a4f7d;
+  padding: 20px 40px;
   text-align: center;
-  background-color:plum;
+  background-color: plum;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-
-
-
 .task-input {
-  width: 600px;
-  padding: 12px 20px;
+  width: 500px;
+  padding: 14px 20px;
   border: 2px solid #ccc;
   border-radius: 25px;
   font-size: 16px;
   margin-right: 10px;
+  outline: none;
 }
 
 .add-btn {
-  padding: 12px 30px;
+  padding: 14px 24px;
   background-color: palevioletred;
   color: white;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   font-weight: 500;
+  transition: background-color 0.3s ease;
 }
 
 .add-btn:hover {
@@ -49,28 +53,34 @@ body {
 
 .list {
   list-style: none;
-  padding: 5px;
-  justify-content: center;
-  padding: 5px;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
 }
 
 .todo-item {
   border: 2px solid #ddd;
   border-radius: 25px;
   margin: 10px 0;
-  padding: 15px 30px;
+  padding: 15px 25px;
   background-color: palevioletred;
   color: white;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
 }
 
-
+.todo-item:hover {
+  transform: scale(1.01);
+}
 
 .todo-text {
   flex-grow: 1;
   margin: 0;
   font-weight: 500;
+  font-size: 16px;
 }
 
 .strike {
@@ -86,15 +96,16 @@ body {
   border-radius: 20px;
   cursor: pointer;
   font-weight: 500;
-
+  transition: background-color 0.3s ease;
 }
 
 .delete-btn:hover {
-  background-color: #ff0000;
+  background-color: #ff4d4d;
 }
 
 .loading {
   text-align: center;
   color: #666;
   margin-top: 30px;
+  font-size: 18px;
 }
